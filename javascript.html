@@ -5,24 +5,73 @@
       Assignment 2
     </title>
 
-<script>
+  <style>
 
-    var myColors = ["red", "white", "blue", "yellow"];
-
-    function changeBackground(color) {
-   document.body.style.background = myColors[random[0,4];
+    .button {
+        background-color: #a3a3c2;
+        border-radius: 8px;
+        border: none;
+        color: white;
+        opacity: 0.6;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-family: garamond;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        -webkit-transition-duration: 0.4s; /* Safari */
+        transition-duration: 0.4s;
     }
 
+    .button2:hover {
+        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+    }
 
+  </style>
 
-</script>
-
-  </head>
+</head>
 
 <body>
-<button onclick="changeBackground()">Click me</button>
 
+  <center>
+    </br>
+      <h1 align="middle">
+        <font face="garamond">
+           ASSIGNMENT TWO
+        </font>
+      </h1>
 
+    </br>
+
+    <p>
+      <font face = "garamond">
+      This button will change the background to a color chosen </br>
+      at random from an array and print the color name to the consol.
+    </p>
+
+    </br>
+
+    <button class="button button2" onclick="changeBackground()" > Click Me</button>
+  </center>
+
+  <script>
+      //set array of colors
+      var myColors = ["#3399ff", "#ff00ff", "#00b386", "#666699"];
+
+      //a variable that selects a random color from myColors
+      var randomColor = myColors[Math.floor(Math.random()*myColors.length)];
+
+      //a function that takes the random color and makes it the background color
+      function changeBackground() {
+     document.body.style.background = randomColor;
+      }
+
+      //log the color in the console
+      console.log(randomColor);
+
+  </script>
 
 </body>
 </html>
