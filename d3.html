@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>
+      Assignment 3
+    </title>
+
+    <style>
+
+      .button {
+          background-color: #a3a3c2;
+          border-radius: 8px;
+          border: none;
+          color: white;
+          opacity: 0.6;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-family: garamond;
+          font-size: 16px;
+          margin: 4px 2px;
+          cursor: pointer;
+          -webkit-transition-duration: 0.4s; /* Safari */
+          transition-duration: 0.4s;
+      }
+
+      .button2:hover {
+          box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+      }
+
+    </style>
+
+  </head>
+
+  <body>
+
+  </br>
+      <a href="index.html">
+        <p>
+          <font size="5">
+           <
+         </font>
+        </p>
+      </a>
+
+    <center>
+      </br>
+        <h1 align="middle">
+          <font face="garamond">
+             ASSIGNMENT THREE
+          </font>
+        </h1>
+
+      </br>
+
+ <script src="https://d3js.org/d3.v4.min.js"></script>
+
+       <svg id="chart" width="450" height="150" ></svg>
+     </br>
+     </br>
+       <button id="newButton" class="button button2" > New Data </button>
+
+
+
+
+</center>
+
+
+ <script>
+          var dataset1= [40 , 80, 120 , 160 , 200];
+          var dataset2 = [450 , 325 , 200 , 125 , 55];
+          var rectheight = 25;
+
+          d3.select("#chart")
+          .selectAll("rect")
+          .data(dataset1)
+          .enter()
+          .append("rect")
+          .attr("x",20)
+          .attr("y", (d,i) => i*rectheight)
+          .attr("width", (d) => d)
+          .attr("height", rectheight-2)
+          .attr("fill","#0099e6");
+
+
+          d3.select("#newButton") .on("click",function(){
+            d3.select("#chart")
+            .selectAll("rect")
+            .data(dataset2)
+            .transition()
+            .duration(2000)
+            .attr("width", (d) => d)
+            .attr("fill","#004d4d");
+
+
+          })
+
+      </script>
+
+  </body>

@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>
+      Feb 5th
+    </title>
+  </head>
+
+  <body id="myBody">
+
+    <svg id="viz"> </svg>
+      <script src="numbers.js"></script>
+      <script src="https://d3js.org/d3.v4.min.js"></script>
+
+<script>
+      var body = d3.select("#myBody")
+        .style("background-color", "blue")
+        .attr("id", "myBody1");
+
+
+        var myData =[24, 50, 13, 5, 12];
+        var newData =[69,75,40];
+
+        var drawCircles = function(dataArray) {
+
+            var svg = d3.select("#viz");
+
+            var dots = svg.selectAll(".dot")
+              .data(dataArray);
+
+            dots.enter().append("circle") //enter
+              .attr("class", "dot")
+              .attr("r",0)
+              .attr("fill", "black")
+              .attr("cx", function(dataPoint, index) {
+                return 25 + (index * 50);
+              })
+              .attr("cy", 25)
+              .transition()
+              .duration(1000)
+              .attr("r", function(dataPoint, index) {
+                  return dataPoint/2;
+              });
+
+
+
+            dots //update
+            .transition()
+            .duration(1000) //1 second
+            .attr("r", function(dataPoint) {
+              return dataPoint/2;
+            })
+            .attr("fill", "green");
+
+            dots.exit() //exit
+            .transition()
+            .duration(1000)
+            .attr("r",0)
+            .remove();
+};
+        drawCircles(myData);
+
+</script>
+  </body>
+
+
+</html>
