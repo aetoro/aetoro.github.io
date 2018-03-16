@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>
+      Feb 12th
+    </title>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+  </head>
+
+  <body>
+
+<script>
+    d3.text("textData.txt", function(error, data) {
+    if (error){
+    console.log("ERROR!");
+    }
+    else {
+      console.log("txt");
+    console.log(data);
+    }
+    });
+
+  d3.csv("csvData.csv", function(error, data) {
+  if (error){
+  console.log("ERROR!");
+  }
+  else {
+  console.log("csv");
+  console.log(data);
+  data.forEach(function(d){
+    d.value = parseFloat(d.value);
+      })
+    }
+  });
+
+  d3.json("dataObject.json", function(error, data) {
+  if (error){
+  console.log("ERROR!");
+  }
+  else {
+  console.log("JSON");
+  console.log(data);
+  }
+  });
+
+  </script>
+
+
+  </body>
+
+
+</html>

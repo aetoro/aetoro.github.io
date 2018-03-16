@@ -1,0 +1,21 @@
+<html>
+
+  <head>
+    <meta charset="utf-8" />
+    <title>Loading Data!</title>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+  </head>
+
+  <body id="myBody">
+    <svg id="viz"></svg>
+  </body>
+  <script>
+  var url = "https://games.crossfit.com/competitions/api/v1/competitions/open/2018/leaderboards?division=1&region=0&scaled=0&sort=0&occupation=0&page=1";
+   d3.json(url, function(error, data) {
+     console.log("API Object");
+     console.log(data);
+   });
+
+ </script>
+
+</html>
