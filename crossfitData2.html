@@ -11,7 +11,7 @@
   </body>
   <script>
 
-  d3.json("./menLeaderboard.json", function(error, data) {
+  d3.json("./womenLeaderboard.json", function(error, data) {
         if (error) {
           console.log("Error!");
         }
@@ -20,34 +20,50 @@
           console.log(data);
         }
 
-
-//d3.json("menLeaderboard.json", function (error, data) {
-
-
-    var ceCount = 0, //central East - 6
-        enCount = 0, //europe north - 22
-        canEastCount = 0; //canada east -18
-
-    for (var i = 0; i <= data.leaderboardRows.length; i++) {
-
-        if (data.leaderboardRows[i].entrant.regionId == "6") {
-            ceCount++;
-        }
-
-        if (data.leaderboardRows[i].entrant.regionId == "22") {
-            enCount++;
-        }
-
-        if (data.leaderboardRows[i].entrant.regionId == "18") {
-            canEastCount++;
-        }
-    }
+        var northEastCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "11"; }).length,
+            canadaEastCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "18"; }).length,
+            midAtlanticCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "9"; }).length,
+            southEastCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "15"; }).length,
+            centralEastCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "6"; }).length,
+            northCentralCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "10"; }).length,
+            southWestCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "17"; }).length,
+            southCentralCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "14"; }).length,
+            westCoastCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "19"; }).length,
+            canadaWestCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "5"; }).length,
+            centralAmericaCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "26"; }).length,
+            southAmericaCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "27"; }).length,
+            europeNorthCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "22"; }).length,
+            europeCentralCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "23"; }).length,
+            europeSouthCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "24"; }).length,
+            middleEastAfricaCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "25"; }).length,
+            asiaCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "20"; }).length,
+            australasiaCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "21"; }).length;
 
 
 
-    console.log("central East: " + ceCount);
-    console.log("europe north: " + enCount);
-    console.log("canada east: " + canEastCount);
+
+
+            console.log("northEastCount:" + northEastCount);
+            console.log("canadaEastCount:" + canadaEastCount);
+            console.log("midAtlanticCount:" + midAtlanticCount);
+            console.log("southEastCount:" + southEastCount);
+            console.log("centralEastCount:" + centralEastCount);
+            console.log("northCentralCount:" + northCentralCount);
+            console.log("southWestCount:" + southWestCount);
+            console.log("southCentralCount:" + southCentralCount);
+            console.log("westCoastCount:" + westCoastCount);
+            console.log("canadaWestCount:" + canadaWestCount);
+            console.log("centralAmericaCount:" + centralAmericaCount);
+            console.log("southAmericaCount:" + southAmericaCount);
+            console.log("europeNorthCount:" + europeNorthCount);
+            console.log("europeCentralCount:" + europeCentralCount);
+            console.log("europeSouthCount:" + europeSouthCount);
+            console.log("middleEastAfricaCount:" + middleEastAfricaCount);
+            console.log("asiaCount:" + asiaCount);
+            console.log("australasiaCount:" + australasiaCount);
+
+
+
 
     });
 
