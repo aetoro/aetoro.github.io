@@ -10,11 +10,7 @@
     <svg id="viz"></svg>
   </body>
   <script>
-  var url = "https://games.crossfit.com/competitions/api/v1/competitions/open/2018/leaderboards?division=1&region=0&scaled=0&sort=0&occupation=0&page=1";
-   d3.json(url, function(error, data) {
-     console.log("API Object");
-     console.log(data);
-   });
+
 
    d3.json("./menLeaderboard.json", function(error, data) {
          if (error) {

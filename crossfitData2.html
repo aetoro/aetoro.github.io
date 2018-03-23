@@ -1,0 +1,56 @@
+<html>
+
+  <head>
+    <meta charset="utf-8" />
+    <title>Loading CrossFit Data!</title>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+  </head>
+
+  <body id="myBody">
+    <svg id="viz"></svg>
+  </body>
+  <script>
+
+  d3.json("./menLeaderboard.json", function(error, data) {
+        if (error) {
+          console.log("Error!");
+        }
+        else {
+          console.log("JSON Array");
+          console.log(data);
+        }
+
+
+//d3.json("menLeaderboard.json", function (error, data) {
+
+
+    var ceCount = 0, //central East - 6
+        enCount = 0, //europe north - 22
+        canEastCount = 0; //canada east -18
+
+    for (var i = 0; i <= data.leaderboardRows.length; i++) {
+
+        if (data.leaderboardRows[i].entrant.regionId == "6") {
+            ceCount++;
+        }
+
+        if (data.leaderboardRows[i].entrant.regionId == "22") {
+            enCount++;
+        }
+
+        if (data.leaderboardRows[i].entrant.regionId == "18") {
+            canEastCount++;
+        }
+    }
+
+
+
+    console.log("central East: " + ceCount);
+    console.log("europe north: " + enCount);
+    console.log("canada east: " + canEastCount);
+
+    });
+
+    </script>
+
+   </html>
