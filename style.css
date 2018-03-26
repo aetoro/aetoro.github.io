@@ -1,10 +1,118 @@
-
-
-p{
-  color: blue;
-  font-size; 32px;
+h2, h3, h4, h5, h6 {
+    font-family: "Open Sans", Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    line-height: 1.1
 }
 
-p#redParagraph{
-  color: red;
+h1 {
+    font-family: Raleway, sans-serif;
+    font-weight: 900;
+    font-size: 44px;
+    font-size: 4.4rem;
+    color : #2E60B7;
+    text-transform: uppercase;
+}
+
+.top {
+    font-family: Raleway, sans-serif;
+    font-weight: 900;
+    font-size: 44px;
+    font-size: 4.4rem;
+    color : #C12026;
+    text-transform: uppercase;
+}
+
+.break {
+    font-family: Raleway, sans-serif;
+    font-weight: 900;
+    font-size: 44px;
+    font-size: 4.4rem;
+    text-shadow: -1px 0 #000000,0 1px #000000,1px 0 #000000,0 -1px #000000;
+    color : white;
+    text-transform: uppercase;
+}
+
+.games .c-heading-data-sub {
+    font-size: 30px;
+    font-size: 3rem;
+    font-family: Raleway, sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 6px
+}
+
+.games .c-heading-page-cover {
+    font-size: 47px;
+    font-size: 4.7rem;
+    font-family: Raleway, sans-serif;
+    font-weight: 900;
+    color: #FFF;
+    margin: 0 0 20px
+}
+
+.games .block-title {
+    position: relative;
+    bottom: .95em;
+    z-index: 1;
+    margin-bottom: -.95em;
+    font-family: Raleway, sans-serif;
+    font-weight: 900;
+    font-size: 44px;
+    font-size: 4.4rem;
+    text-transform: uppercase
+}
+
+.games .games-events-details .events > li .header .events-heading {
+    font-size: 24px;
+    font-size: 2.4rem;
+    text-transform: uppercase;
+    font-family: Raleway, sans-serif;
+    font-weight: 700
+}
+
+ p {
+    font-size: 11px;
+    font-size: 1.1rem;
+    font-family: Ubuntu, sans-serif
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.sideR {
+    flex: 15%;
+    padding: 20px;
+}
+
+
+.title {
+    flex: 50%;
+    padding: 20px;
+}
+
+.sideL {
+    flex: 8%;
+    padding: 20px;
+    align-content: center;
+}
+
+.main {
+    padding-right: 150px;
+    padding-left: 150px;
+    text-align: left;
+}
+
+
+
+/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 700px) {
+    .row{
+        flex-direction: column;
+    }
 }

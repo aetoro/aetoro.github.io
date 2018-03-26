@@ -2,12 +2,47 @@
 
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Loading CrossFit Data!</title>
     <script src="https://d3js.org/d3.v4.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,700,800,900|Ubuntu:400,500,700">
+     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300,600,700,800" type="text/css">
   </head>
 
-  <body id="myBody">
-    <svg id="viz"></svg>
+  <body >
+    <!-- <div class="row">
+        <div class="sideL">
+            <img src="images/logo2018.png" alt="CrossFit" style="width:286px;height:150px;">
+        </div>
+
+          <div class="title">
+              <h1>
+                the open | top 50
+              </h1>
+            </div>
+
+          </div> -->
+
+          <div align=center>
+            <img src="images/logo2018.png" alt="CrossFit" style="width:286px;height:150px">
+            <h1>
+              the open | top 50
+            </h1>
+          </div>
+
+          <div class="main">
+
+<p>
+  On February 22, in an event known simply as "the Open," an estimated 500,000 CrossFit athletes from all over the world began a five-week fitness competition, which tested strength, endurance, and aspects of gymnastics.</p>
+
+  <p>The Open works like this: every Thursday at 8 p.m. Eastern, a set workout, kept secret ahead of time, is released live online. Everyone, then, has four days to complete it in front of a judge or on tape and to submit their scores to the leaderboard.</p>
+
+  <p>On March 26, the Open came to a close. Here is a look at which regions had the most or fewest athletes in the top 50.
+
+</p>
+
+</div>
   </body>
   <script>
 
@@ -61,6 +96,13 @@
             console.log("middleEastAfricaCount:" + middleEastAfricaCount);
             console.log("asiaCount:" + asiaCount);
             console.log("australasiaCount:" + australasiaCount);
+
+//   var regionData = d3.nest()
+//   .key(function(d) {
+//     return d.entrant.regionId;
+//   })
+//   .entries(data);
+// console.log(regionData);
 
 
 
