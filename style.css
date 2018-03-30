@@ -15,7 +15,7 @@ h1 {
     margin-top: 40px;
 }
 
-.top {
+/* .top {
     font-family: Raleway, sans-serif;
     font-weight: 900;
     font-size: 44px;
@@ -70,7 +70,7 @@ h1 {
     text-transform: uppercase;
     font-family: Raleway, sans-serif;
     font-weight: 700
-}
+} */
 
  p {
     font-size: 11px;
@@ -112,3 +112,16 @@ div.main {
 .button {width: 250px;}
 
 button:focus{background-color:#59081B;}
+
+.tooltip {
+  position: absolute;
+  text-align: center;
+  width: 60px;
+  height: 28px;
+  padding: 2px;
+  font: 12px sans-serif;
+  background: lightsteelblue;
+  border: 0px;
+  border-radius: 8px;
+  pointer-events: none;
+}
