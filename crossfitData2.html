@@ -113,11 +113,11 @@
           var dataExtent = d3.extent(regionData, function(d){
             return d.values.length;
           });
-          console.log(dataExtent);
+          console.log("dataExtent:" + dataExtent);
 
           var colorScale = d3.scaleLinear()
           .domain(dataExtent)
-          .range(["green", "yellow"]);
+          .range(["#d1e2fc", "#2E60B7"]); //#C12026 <- red  #2E60B7 <-blue
 
         //});
 
@@ -143,18 +143,19 @@
             var regionsData = regionData.filter(function(d){
               return d.key == feature.properties.region_id;
             });
+            console.log(regionsData);
 
             if (regionsData.length > 0) {
-              var ranking = regionsData[0].ranking;
+              var ranking = regionsData[0].values.length;
               return colorScale(ranking);
             }
             else {
-              return "grey";
+              return "#c4c5c6";
             }
           })
 
           .attr("stroke", "white")
-          .attr("stroke-width", 0.5)
+          .attr("stroke-width", 0.25)
           .attr("d", function(feature) {
             return path(feature);
           });
