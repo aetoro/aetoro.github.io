@@ -127,7 +127,7 @@
 
             var mapRegions = d3.select("#map").selectAll("path")
             .data(mapData.features);
-            //console.log(mapRegions);
+            console.log(mapRegions);
 
             mapRegions.enter().append("path")
             .attr("fill", function(feature) {
@@ -161,7 +161,9 @@
                 .style("display", "none");
 
             function mouseover() {
-              div.style("display", "inline");
+              div.style("display", "inline")
+              div.style("stroke", "black")
+              div.style("stroke-width", 1);
             }
 
             function mousemove() {
