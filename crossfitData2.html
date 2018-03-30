@@ -1,114 +1,169 @@
 <html>
 
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Loading CrossFit Data!</title>
-    <script src="https://d3js.org/d3.v4.min.js"></script>
-    <link rel="stylesheet" href="style.css">
-     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,700,800,900|Ubuntu:400,500,700">
-     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300,600,700,800" type="text/css">
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Loading CrossFit Data!</title>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,700,800,900|Ubuntu:400,500,700">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300,600,700,800" type="text/css">
+</head>
 
-  <body >
-    <!-- <div class="row">
-        <div class="sideL">
-            <img src="images/logo2018.png" alt="CrossFit" style="width:286px;height:150px;">
-        </div>
+<body >
 
-          <div class="title">
-              <h1>
-                the open | top 50
-              </h1>
-            </div>
 
-          </div> -->
-
-          <div align=center>
-            <img src="images/logo2018.png" alt="CrossFit" style="width:286px;height:150px">
-            <h1>
-              the open | top 50
-            </h1>
-          </div>
-
-          <div class="main">
-
-<p>
-  On February 22, in an event known simply as "the Open," an estimated 500,000 CrossFit athletes from all over the world began a five-week fitness competition, which tested strength, endurance, and aspects of gymnastics.</p>
-
-  <p>The Open works like this: every Thursday at 8 p.m. Eastern, a set workout, kept secret ahead of time, is released live online. Everyone, then, has four days to complete it in front of a judge or on tape and to submit their scores to the leaderboard.</p>
-
-  <p>On March 26, the Open came to a close. Here is a look at which regions had the most or fewest athletes in the top 50.
-
-</p>
-
+<div class="image" align=center>
+  <img src="images/logo2018.png" alt="CrossFit" style="width:286px;height:150px">
 </div>
-  </body>
-  <script>
+<h1 align=center>
+  the open | top 50
+</h1>
 
-  d3.json("./womenLeaderboard.json", function(error, data) {
-        if (error) {
-          console.log("Error!");
-        }
-        else {
-          console.log("JSON Array");
-          console.log(data);
-        }
+
+
+<div class="main" aligh=center>
+  <p>
+    On February 22, in an event known simply as "the Open," an estimated 500,000 CrossFit athletes from all over the world began a five-week fitness competition, which tested strength, endurance, and aspects of gymnastics.</p>
+
+    <p>The Open works like this: every Thursday at 8 p.m. Eastern, a set workout, kept secret ahead of time, is released live online. Everyone, then, has four days to complete it in front of a judge or on tape and to submit their scores to the leaderboard.</p>
+
+    <p>On March 26, the Open came to a close. Here is a look at which regions had the most or fewest athletes in the top 50.
+
+    </p>
+
+  </div>
+
+
+
+  <center>
+    <button class="button">men</button>
+    <button class="button">women</button>
+    <center>
+
+      <svg id="map" width=1000 height=700 bgcolor>
+        <rect width=1000 height=700 fill="#eff1f4">
+</svg>
+        </body>
+        <script>
+
+        d3.queue()
+          .defer(d3.json, "crossfitMap.geojson")
+          .defer(d3.json, "menLeaderboard.json")
+          .awaitAll(function(error, dataArray) {
+            var mapData = dataArray[0];
+            var data = dataArray[1];
+//});
+
+        //console.log(data);
 
         var northEastCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "11"; }).length,
-            canadaEastCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "18"; }).length,
-            midAtlanticCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "9"; }).length,
-            southEastCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "15"; }).length,
-            centralEastCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "6"; }).length,
-            northCentralCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "10"; }).length,
-            southWestCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "17"; }).length,
-            southCentralCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "14"; }).length,
-            westCoastCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "19"; }).length,
-            canadaWestCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "5"; }).length,
-            centralAmericaCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "26"; }).length,
-            southAmericaCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "27"; }).length,
-            europeNorthCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "22"; }).length,
-            europeCentralCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "23"; }).length,
-            europeSouthCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "24"; }).length,
-            middleEastAfricaCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "25"; }).length,
-            asiaCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "20"; }).length,
-            australasiaCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "21"; }).length;
+        canadaEastCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "18"; }).length,
+        midAtlanticCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "9"; }).length,
+        southEastCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "15"; }).length,
+        centralEastCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "6"; }).length,
+        northCentralCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "10"; }).length,
+        southWestCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "17"; }).length,
+        southCentralCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "14"; }).length,
+        westCoastCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "19"; }).length,
+        canadaWestCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "5"; }).length,
+        centralAmericaCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "26"; }).length,
+        southAmericaCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "27"; }).length,
+        europeNorthCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "22"; }).length,
+        europeCentralCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "23"; }).length,
+        europeSouthCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "24"; }).length,
+        middleEastAfricaCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "25"; }).length,
+        asiaCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "20"; }).length,
+        australasiaCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "21"; }).length;
 
 
 
 
 
-            console.log("northEastCount:" + northEastCount);
-            console.log("canadaEastCount:" + canadaEastCount);
-            console.log("midAtlanticCount:" + midAtlanticCount);
-            console.log("southEastCount:" + southEastCount);
-            console.log("centralEastCount:" + centralEastCount);
-            console.log("northCentralCount:" + northCentralCount);
-            console.log("southWestCount:" + southWestCount);
-            console.log("southCentralCount:" + southCentralCount);
-            console.log("westCoastCount:" + westCoastCount);
-            console.log("canadaWestCount:" + canadaWestCount);
-            console.log("centralAmericaCount:" + centralAmericaCount);
-            console.log("southAmericaCount:" + southAmericaCount);
-            console.log("europeNorthCount:" + europeNorthCount);
-            console.log("europeCentralCount:" + europeCentralCount);
-            console.log("europeSouthCount:" + europeSouthCount);
-            console.log("middleEastAfricaCount:" + middleEastAfricaCount);
-            console.log("asiaCount:" + asiaCount);
-            console.log("australasiaCount:" + australasiaCount);
-
-//   var regionData = d3.nest()
-//   .key(function(d) {
-//     return d.entrant.regionId;
-//   })
-//   .entries(data);
-// console.log(regionData);
+        console.log("northEastCount:" + northEastCount);
+        console.log("canadaEastCount:" + canadaEastCount);
+        console.log("midAtlanticCount:" + midAtlanticCount);
+        console.log("southEastCount:" + southEastCount);
+        console.log("centralEastCount:" + centralEastCount);
+        console.log("northCentralCount:" + northCentralCount);
+        console.log("southWestCount:" + southWestCount);
+        console.log("southCentralCount:" + southCentralCount);
+        console.log("westCoastCount:" + westCoastCount);
+        console.log("canadaWestCount:" + canadaWestCount);
+        console.log("centralAmericaCount:" + centralAmericaCount);
+        console.log("southAmericaCount:" + southAmericaCount);
+        console.log("europeNorthCount:" + europeNorthCount);
+        console.log("europeCentralCount:" + europeCentralCount);
+        console.log("europeSouthCount:" + europeSouthCount);
+        console.log("middleEastAfricaCount:" + middleEastAfricaCount);
+        console.log("asiaCount:" + asiaCount);
+        console.log("australasiaCount:" + australasiaCount);
 
 
+          var regionData = d3.nest()
+          .key(function(d) {
+            return d.entrant.regionId;
+          })
+          .entries(data.leaderboardRows);
+          console.log(regionData)
+          // console.log(regionData.filter(function(d) {
+          //   return d.key == "22";
+          // })[0].values.length);
+
+          var dataExtent = d3.extent(regionData, function(d){
+            return d.values.length;
+          });
+          console.log(dataExtent);
+
+          var colorScale = d3.scaleLinear()
+          .domain(dataExtent)
+          .range(["green", "yellow"]);
+
+        //});
+
+        //d3.json('crossfitMap.geojson', function(error, mapData) {
+          var features = mapData.features;
+          console.log(mapData);
+
+          var proj = d3.geoMercator()
+          .fitSize([1000, 700], mapData);
+
+          var path = d3.geoPath()
+          .projection(proj);
+
+          var mapRegions = d3.select("#map").selectAll("path")
+          .data(mapData.features);
+          console.log(mapRegions);
+
+          mapRegions.enter().append("path")
+          .attr("fill", function(feature) {
+
+            //var regionsIds = regionData.data.leaderboardRows.key;
+
+            var regionsData = regionData.filter(function(d){
+              return d.key == feature.properties.region_id;
+            });
+
+            if (regionsData.length > 0) {
+              var ranking = regionsData[0].ranking;
+              return colorScale(ranking);
+            }
+            else {
+              return "grey";
+            }
+          })
+
+          .attr("stroke", "white")
+          .attr("stroke-width", 0.5)
+          .attr("d", function(feature) {
+            return path(feature);
+          });
+
+        });
 
 
-    });
 
-    </script>
 
-   </html>
+      </script>
+
+      </html>
