@@ -96,6 +96,9 @@
             console.log("asiaCount:" + asiaCount);
             console.log("australasiaCount:" + australasiaCount);
 
+            var div = d3.select("body").append("div")
+                .attr("class", "tooltip")
+                .style("display", "none");
 
             var regionData = d3.nest()
             .key(function(d) {
@@ -152,30 +155,46 @@
             .attr("d", function(feature) {
                 return path(feature);
                 })
-                .on("mouseover", mouseover)
-                .on("mousemove", mousemove)
-                .on("mouseout", mouseout);
+                .on("mouseover", function(d) {
+    	div.transition()
+      	   .duration(200)
+           .style("opacity", .9);
+           //div.text(d.place)
+           div.text(d3.event.pageX + ", " + d3.event.pageY)
+           .style("left", (d3.event.pageX) + "px")
+           .style("top", (d3.event.pageY - 28) + "px");
+	})
 
-            var div = d3.select("body").append("div")
-                .attr("class", "tooltip")
-                .style("display", "none");
+    // fade out tooltip on mouse out
+    .on("mouseout", function(d) {
+        div.transition()
+           .duration(500)
+           .style("opacity", 0);
+    });
+                // .on("mouseover", mouseover)
+                // .on("mousemove", mousemove)
+                // .on("mouseout", mouseout);
 
-            function mouseover() {
-              div.style("display", "inline")
-              div.style("stroke", "black")
-              div.style("stroke-width", 1);
-            }
+            // var div = d3.select("body").append("div")
+            //     .attr("class", "tooltip")
+            //     .style("display", "none");
 
-            function mousemove() {
-              div
-                  .text(d3.event.pageX + ", " + d3.event.pageY)
-                  .style("left", (d3.event.pageX - 34) + "px")
-                  .style("top", (d3.event.pageY - 12) + "px");
-            }
-
-            function mouseout() {
-              div.style("display", "none");
-            }
+            // function mouseover() {
+            //   div.style("display", "inline")
+            //   div.style("stroke", "black")
+            //   div.style("stroke-width", 1);
+            // }
+            //
+            // function mousemove() {
+            //   div
+            //       .text(d3.event.pageX + ", " + d3.event.pageY)
+            //       .style("left", (d3.event.pageX - 34) + "px")
+            //       .style("top", (d3.event.pageY - 12) + "px");
+            // }
+            //
+            // function mouseout() {
+            //   div.style("display", "none");
+            // }
 
           });
 
