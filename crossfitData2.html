@@ -12,176 +12,240 @@
 
 <body >
 
-
+<center>
   <div class="image" align=center>
-    <img src="images/logo2018.png" alt="CrossFit" style="width:286px;height:150px">
+    <img src="images/logo2018.png" alt="CrossFit" style="width:215px;height:150px">
   </div>
-  <h1 align=center>
+  <h1 align=left>
     the open | top 50
   </h1>
-
+</center>
 
 
   <div class="main" aligh=left>
     <p>On February 22, in an event known simply as "the Open," an estimated 500,000 CrossFit athletes from all over the world began a five-week fitness competition, which tested strength, endurance, and aspects of gymnastics.</p>
 
-      <p>The Open works like this: every Thursday at 8 p.m. Eastern, a set workout, kept secret ahead of time, is released live online. Everyone, then, has four days to complete it in front of a judge or on tape and to submit their scores to the leaderboard.</p>
+    <p>The Open works like this: every Thursday at 8 p.m. Eastern, a set workout, kept secret ahead of time, is released live online. Everyone, then, has four days to complete it in front of a judge or on tape and to submit their scores to the leaderboard.</p>
 
-      <p>On March 26, the Open came to a close. Here is a look at which regions had the most or fewest athletes in the top 50.
+    <p>On March 26, the Open came to a close. Here is a look at which regions had the most or fewest athletes in the top 50.
 
-      </p>
+    </p>
 
-    </div>
+  </div>
 
 
 
+  <center>
+    <button id = "men" class="button">men</button>
+    <button id = "women" class="button">women</button>
     <center>
-      <button id = "men" class="button">men</button>
-      <button id = "women" class="button">women</button>
-      <center>
 
-        <svg id="map" width=1000 height=700 bgcolor>
-          <rect width=1000 height=700 fill="#eff1f4">
-          </svg>
+      <svg id="map" width=1000 height=700 bgcolor>
+        <rect width=1000 height=700 fill="#eff1f4">
+        </svg>
 
-          <script>
+        <script>
 
-          d3.queue()
-          .defer(d3.json, "crossfitMap.geojson")
-          .defer(d3.json, "menLeaderboard.json")
-          .awaitAll(function(error, dataArray) {
-            var mapData = dataArray[0];
-            var data = dataArray[1];
+        d3.queue()
+        .defer(d3.json, "crossfitdata/crossfitMap.geojson")
+        .defer(d3.json, "crossfitdata/womenoverall.json")
+        //.defer(d3.json, "crossfitdata/menoverall.json")
+        .awaitAll(function(error, dataArray) {
+          var mapData = dataArray[0];
+          var data = dataArray[1];
 
 
-            var northEastCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "11"; }).length,
-            canadaEastCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "18"; }).length,
-            midAtlanticCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "9"; }).length,
-            southEastCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "15"; }).length,
-            centralEastCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "6"; }).length,
-            northCentralCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "10"; }).length,
-            southWestCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "17"; }).length,
-            southCentralCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "14"; }).length,
-            westCoastCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "19"; }).length,
-            canadaWestCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "5"; }).length,
-            centralAmericaCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "26"; }).length,
-            southAmericaCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "27"; }).length,
-            europeNorthCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "22"; }).length,
-            europeCentralCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "23"; }).length,
-            europeSouthCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "24"; }).length,
-            middleEastAfricaCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "25"; }).length,
-            asiaCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "20"; }).length,
-            australasiaCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "21"; }).length;
+          var northEastCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "11"; }).length,
+          canadaEastCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "18"; }).length,
+          midAtlanticCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "9"; }).length,
+          southEastCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "15"; }).length,
+          centralEastCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "6"; }).length,
+          northCentralCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "10"; }).length,
+          southWestCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "17"; }).length,
+          southCentralCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "14"; }).length,
+          westCoastCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "19"; }).length,
+          canadaWestCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "5"; }).length,
+          centralAmericaCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "26"; }).length,
+          southAmericaCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "27"; }).length,
+          europeNorthCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "22"; }).length,
+          europeCentralCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "23"; }).length,
+          europeSouthCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "24"; }).length,
+          middleEastAfricaCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "25"; }).length,
+          asiaCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "20"; }).length,
+          australasiaCount = data.leaderboardRows.filter(function(d) { return d.entrant.regionId === "21"; }).length;
 
 
 
 
 
-            console.log("northEastCount:" + northEastCount);
-            console.log("canadaEastCount:" + canadaEastCount);
-            console.log("midAtlanticCount:" + midAtlanticCount);
-            console.log("southEastCount:" + southEastCount);
-            console.log("centralEastCount:" + centralEastCount);
-            console.log("northCentralCount:" + northCentralCount);
-            console.log("southWestCount:" + southWestCount);
-            console.log("southCentralCount:" + southCentralCount);
-            console.log("westCoastCount:" + westCoastCount);
-            console.log("canadaWestCount:" + canadaWestCount);
-            console.log("centralAmericaCount:" + centralAmericaCount);
-            console.log("southAmericaCount:" + southAmericaCount);
-            console.log("europeNorthCount:" + europeNorthCount);
-            console.log("europeCentralCount:" + europeCentralCount);
-            console.log("europeSouthCount:" + europeSouthCount);
-            console.log("middleEastAfricaCount:" + middleEastAfricaCount);
-            console.log("asiaCount:" + asiaCount);
-            console.log("australasiaCount:" + australasiaCount);
+          console.log("northEastCount:" + northEastCount);
+          console.log("canadaEastCount:" + canadaEastCount);
+          console.log("midAtlanticCount:" + midAtlanticCount);
+          console.log("southEastCount:" + southEastCount);
+          console.log("centralEastCount:" + centralEastCount);
+          console.log("northCentralCount:" + northCentralCount);
+          console.log("southWestCount:" + southWestCount);
+          console.log("southCentralCount:" + southCentralCount);
+          console.log("westCoastCount:" + westCoastCount);
+          console.log("canadaWestCount:" + canadaWestCount);
+          console.log("centralAmericaCount:" + centralAmericaCount);
+          console.log("southAmericaCount:" + southAmericaCount);
+          console.log("europeNorthCount:" + europeNorthCount);
+          console.log("europeCentralCount:" + europeCentralCount);
+          console.log("europeSouthCount:" + europeSouthCount);
+          console.log("middleEastAfricaCount:" + middleEastAfricaCount);
+          console.log("asiaCount:" + asiaCount);
+          console.log("australasiaCount:" + australasiaCount);
 
-            var regionData = d3.nest()
-            .key(function(d) {
-              return d.entrant.regionId;
-            })
-            .entries(data.leaderboardRows);
-
-
-            var dataExtent = d3.extent(regionData, function(d){
-              return d.values.length;
-            });
-            console.log("dataExtent:" + dataExtent);
-
-            var colorScale = d3.scaleLinear()
-            .domain(dataExtent)
-            .range(["#d1e2fc", "#2E60B7"]); //#C12026 <- red  #2E60B7 <-blue
-
-            //});
+          var regionData = d3.nest()
+          .key(function(d) {
+            return d.entrant.regionId;
+          })
+          .entries(data.leaderboardRows);
 
 
-            var features = mapData.features;
-            //console.log(mapData);
-
-            var proj = d3.geoMercator()
-            .fitSize([1000, 700], mapData);
-
-            var path = d3.geoPath()
-            .projection(proj);
-
-            var mapRegions = d3.select("#map").selectAll("path")
-            .data(mapData.features);
-            console.log(mapRegions);
-
-            mapRegions.enter().append("path")
-            .attr("fill", function(feature) {
-
-
-              var regionsData = regionData.filter(function(d){
-                return d.key == feature.properties.region_id;
-              });
-              //console.log(regionsData);
-
-              if (regionsData.length > 0) {
-                var ranking = regionsData[0].values.length;
-                return colorScale(ranking);
-              }
-              else {
-                return "#c4c5c6";
-              }
-            })
-
-            .attr("stroke", "white")
-            .attr("stroke-width", 0.25)
-            .attr("d", function(feature) {
-                return path(feature);
-                })
-
-                .on("mouseover", mouseover)
-                .on("mousemove", mousemove)
-                .on("mouseout", mouseout);
-
-            var div = d3.select("body").append("div")
-                .attr("class", "tooltip")
-                .style("display", "none");
-
-            function mouseover() {
-              div.style("display", "inline")
-              div.style("stroke", "black")
-              div.style("stroke-width", 1);
-            }
-
-            function mousemove() {
-              div
-                  .text(d3.event.pageX + ", " + d3.event.pageY)
-                  .style("left", (d3.event.pageX - 34) + "px")
-                  .style("top", (d3.event.pageY - 12) + "px");
-            }
-
-            function mouseout() {
-              div.style("display", "none");
-            }
-
+          var dataExtent = d3.extent(regionData, function(d){
+            return d.values.length;
           });
+          console.log("dataExtent:" + dataExtent);
+
+          var colorScale = d3.scaleLinear()
+          .domain(dataExtent)
+          .range(["#d1e2fc", "#2E60B7"]); //#C12026 <- red  #2E60B7 <-blue
+
+          //});
+
+
+          var features = mapData.features;
+          //console.log(mapData);
+
+          var proj = d3.geoMercator()
+          .fitSize([1000, 700], mapData);
+
+          var path = d3.geoPath()
+          .projection(proj);
+
+          var mapRegions = d3.select("#map").selectAll("path")
+          .data(mapData.features);
+          console.log(mapRegions);
+
+          mapRegions.enter().append("path")
+          .attr("fill", function(feature) {
+
+
+            var regionsData = regionData.filter(function(d){
+              return d.key == feature.properties.region_id;
+            });
+            //console.log(regionsData);
+
+            if (regionsData.length > 0) {
+              var ranking = regionsData[0].values.length;
+              return colorScale(ranking);
+            }
+            else {
+              return "#c4c5c6";
+            }
+          })
+
+          .attr("stroke", "white")
+          .attr("stroke-width", 0.25)
+          .attr("d", function(feature) {
+            return path(feature);
+          })
+
+          .on("mouseover", mouseover)
+          .on("mousemove", mousemove)
+          .on("mouseout", mouseout);
+
+          var div = d3.select("body").append("div")
+          .attr("class", "tooltip")
+          .style("display", "none");
+
+          function mouseover() {
+            d3.select(this).attr("stroke", "#555656");
+            d3.select(this).attr("stroke-width", 0.25);
+            //d3.select(this).attr("fill", "#C12026");
+            d3.select(this).attr("fill", function(feature) {
+                var regionsData = regionData.filter(function(d){
+                  return d.key == feature.properties.region_id;
+                });
+                //console.log(regionsData);
+
+                if (regionsData.length > 0) {
+                  var ranking = regionsData[0].values.length;
+                  return "#59081B"; //#C12026
+                }
+                else {
+                  return "#c4c5c6";
+                }
+              })
+
+            div.style("display", "inline")
+            //div.style("stroke", "#555656")
+            //div.style("stroke-width", 2);
+          }
+
+          function mousemove(feature) {
+            var regionsData = regionData.filter(function(d){
+              return d.key == feature.properties.region_id;
+            });
+            //console.log(regionsData);
+
+            if (regionsData.length > 0) {
+              var ranking = regionsData[0].values.length;
+              //var names = [];
+              //var overallRank = [];
+              var namesAndRank = [];
+              for(var i = 0; i < ranking; i++){
+                namesAndRank[i] = regionsData[0].values[i].entrant.competitorName + ", " + regionsData[0].values[i].overallRank;
+              }
+              var text = "<b>" + feature.properties.region + ":</b>  " + ranking + "</br>";
+              for (i = 0; i < ranking; i++) {
+                text += namesAndRank[i] + "<br>";
+              }
+
+            }
+            else {
+              var text = "<b>" + feature.properties.region + "</b> "
+            }
+
+            div
+            .style("left", d3.event.pageX + 10 + "px")
+            .style("top", d3.event.pageY + 1 + "px")
+            .html(text)
+
+          }
+
+          function mouseout() {
+            d3.select(this).attr("stroke", "white");
+            d3.select(this).attr("stroke-width", 0.25);
+            d3.select(this).attr("fill", function(feature) {
+
+
+                var regionsData = regionData.filter(function(d){
+                  return d.key == feature.properties.region_id;
+                });
+                //console.log(regionsData);
+
+                if (regionsData.length > 0) {
+                  var ranking = regionsData[0].values.length;
+                  return colorScale(ranking);
+                }
+                else {
+                  return "#c4c5c6";
+                }
+              })
+
+            div.style("display", "none");
+          }
+
+        });
 
 
 
 
-          </script>
-        </body>
-        </html>
+        </script>
+      </br>
+    </br>
+  </body>
+  </html>

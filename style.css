@@ -12,7 +12,9 @@ h1 {
     color : #2E60B7;
     text-transform: uppercase;
     margin-bottom: 20px;
-    margin-top: 40px;
+    margin-top: 55px;
+    display:inline-block;
+    vertical-align: top;
 }
 
 /* .top {
@@ -81,6 +83,7 @@ h1 {
 
 div.image {
     margin-top: 20px;
+    display:inline-block;
 }
 
 div.main {
@@ -115,12 +118,10 @@ button:focus{background-color:#59081B;}
 
 .tooltip {
   position: absolute;
-  text-align: center;
-  width: 60px;
-  height: 28px;
-  padding: 2px;
+  text-align: left;
+  padding: 5px;
   font: 12px Raleway, sans-serif;
-  background: lightsteelblue;
+  background: white;
   border: 0px;
   border-radius: 8px;
   pointer-events: none;
