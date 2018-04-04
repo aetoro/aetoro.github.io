@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>
+      976
+    </title>
+  </head>
+
+  <body>
+
+  <script>
+  var $internal = {"data":[["Stage","VO2","Heart Rate"],["1","6.74","98"],["1","9.42","95"],["1","9.34","97"],["1","13.53","104"],["1","15.59","111"],["1","16.21","112"],["1","13.56","111"],["1","14.63","108"],["1","16.65","106"],["1","16.23","106"],["1","15.9","108"],["1","13.61","108"],["1","16.98","108"],["1","17.64","108"],["1","16.72","110"],["1","16.97","108"],["1","15.17","106"],["1","13.91","108"],["2","16.04","110"],["2","18.52","112"],["2","19.9","119"],["2","20.75","126"],["2","20.98","126"],["2","21.82","125"],["2","21.71","125"],["2","22.9","126"],["2","23.07","125"],["2","23.14","124"],["2","23.8","124"],["2","22.2","127"],["2","24.25","125"],["2","22.52","124"],["2","23.15","124"],["2","24.23","126"],["2","24.47","128"],["2","22.74","128"],["3","22.63","131"],["3","24.2","134"],["3","28.63","139"],["3","28.09","145"],["3","29.1","149"],["3","28.76","150"],["3","30.5","150"],["3","31.35","151"],["3","32.3","151"],["3","32.05","152"],["3","32.11","152"],["3","32.72","154"],["3","32.67","155"],["3","31.4","157"],["3","33.56","157"],["3","33.89","157"],["3","33.04","159"],["3","31.35","160"],["4","31.74","159"],["4","35.99","160"],["4","39.04","164"],["4","37.67","170"],["4","39.02","174"],["4","39.58","175"],["4","40.57","176"],["4","41.23","177"],["4","42.34","177"],["4","41.68","177"],["4","42.42","178"],["4","43.02","178"],["4","44.18","180"],["4","43.58","181"],["4","43.99","181"],["4","44.55","182"],["4","44.15","182"],["4","43.51","183"],["5","47.02","183"],["5","46.84","184"],["5","47.37","186"],["5","47.84","187"],["5","47.99","188"],["5","47.43","188"],["5","49.58","188"],["5","49.38","189"],["5","49.44","189"],["5","48.96","190"],["5","50.35","190"],["5","50.5","191"]]};
+  </script>
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+    <div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+    <script>
+
+    //orginal from https://www.funfun.io/1/#/edit/5a55dc978dfd67466879eb24 and modified slightly
+
+    var vo2Data = [];
+    var hrData = [];
+    var data = $internal.data;
+    var stage = [];
+    for(var i=1;i<data.length;i++){
+    	vo2Data.push(parseFloat(data[i][1]));
+      	hrData.push(parseFloat(data[i][2]));
+      	stage.push(data[i][0])
+    }
+
+    Highcharts.chart('container', {
+        chart: {
+            zoomType: 'xy'
+        },
+        title: {
+            text: 'Participant 976 HR & VO2'
+        },
+
+        xAxis: [{
+            categories: stage,
+            crosshair: true
+        }],
+        yAxis: [{ // Primary yAxis
+            labels: {
+                format: '{value} bpm',
+                style: {
+                    color: Highcharts.getOptions().colors[2]
+                }
+            },
+            title: {
+                text: 'Heart Rate',
+                style: {
+                    color: Highcharts.getOptions().colors[2]
+                }
+            },
+            opposite: true
+
+        }, { // Secondary yAxis
+            gridLineWidth: 0,
+            title: {
+                text: 'VO2',
+                style: {
+                    color: Highcharts.getOptions().colors[0]
+                }
+            },
+            labels: {
+                format: '{value}',
+                style: {
+                    color: Highcharts.getOptions().colors[0]
+                }
+            }
+
+        }],
+        tooltip: {
+            shared: true
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'left',
+            x: 80,
+            verticalAlign: 'top',
+            y: 55,
+            floating: true,
+            backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
+        },
+        series: [{
+            name: 'VO2',
+            type: 'spline',
+            yAxis: 1,
+            data: vo2Data,
+            tooltip: {
+                valueSuffix: ' mg/kg/min'
+            }
+
+        },  {
+            name: 'Heart Rate',
+            type: 'spline',
+            data: hrData,
+            tooltip: {
+                valueSuffix: ' bpm'
+            }
+        }]
+    });
+    </script>
+
+
+
+
+  </body>
+
+
+</html>
