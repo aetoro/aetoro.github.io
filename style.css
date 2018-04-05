@@ -1,8 +1,8 @@
-h2, h3, h4, h5, h6 {
+/* h2, h3, h4, h5, h6 {
     font-family: "Open Sans", Helvetica, Arial, sans-serif;
     font-weight: 700;
     line-height: 1.1
-}
+} */
 
 h1 {
     font-family: Raleway, sans-serif;
@@ -88,7 +88,7 @@ div.image {
 
 div.main {
     text-align: justify;
-    width: 800px;
+    width: 1000px;
     margin: auto;
 }
 
