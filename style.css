@@ -1,8 +1,4 @@
-/* h2, h3, h4, h5, h6 {
-    font-family: "Open Sans", Helvetica, Arial, sans-serif;
-    font-weight: 700;
-    line-height: 1.1
-} */
+
 
 h1 {
     font-family: Raleway, sans-serif;
@@ -17,72 +13,31 @@ h1 {
     vertical-align: top;
 }
 
-/* .top {
-    font-family: Raleway, sans-serif;
-    font-weight: 900;
-    font-size: 44px;
-    font-size: 4.4rem;
-    color : #C12026;
-    text-transform: uppercase;
+h2 {
+   font-size: 12px;
+   font-size: 1.2rem;
+   font-family: Raleway, sans-serif;
+   color : #2E60B7;
+   text-transform: uppercase;
 }
 
-.break {
-    font-family: Raleway, sans-serif;
-    font-weight: 900;
-    font-size: 44px;
-    font-size: 4.4rem;
-    text-shadow: -1px 0 #000000,0 1px #000000,1px 0 #000000,0 -1px #000000;
-    color : white;
-    text-transform: uppercase;
+h3 {
+   font-size: 11px;
+   font-size: 1.1rem;
+   font-family: Raleway, sans-serif;
+   color : #C12026;
+   text-transform: uppercase;
 }
-
-.games .c-heading-data-sub {
-    font-size: 30px;
-    font-size: 3rem;
-    font-family: Raleway, sans-serif;
-    font-weight: 700;
-    text-transform: uppercase;
-    margin-bottom: 6px
-}
-
-.games .c-heading-page-cover {
-    font-size: 47px;
-    font-size: 4.7rem;
-    font-family: Raleway, sans-serif;
-    font-weight: 900;
-    color: #FFF;
-    margin: 0 0 20px
-}
-
-.games .block-title {
-    position: relative;
-    bottom: .95em;
-    z-index: 1;
-    margin-bottom: -.95em;
-    font-family: Raleway, sans-serif;
-    font-weight: 900;
-    font-size: 44px;
-    font-size: 4.4rem;
-    text-transform: uppercase
-}
-
-.games .games-events-details .events > li .header .events-heading {
-    font-size: 24px;
-    font-size: 2.4rem;
-    text-transform: uppercase;
-    font-family: Raleway, sans-serif;
-    font-weight: 700
-} */
 
  p {
     font-size: 11px;
     font-size: 1.1rem;
     font-family: Ubuntu, sans-serif
-
 }
 
 div.image {
     margin-top: 20px;
+    margin-right: 10px;
     display:inline-block;
 }
 
@@ -119,10 +74,26 @@ button:focus{background-color:#59081B;}
 .tooltip {
   position: absolute;
   text-align: left;
-  padding: 5px;
+  padding: 15px;
   font: 12px Raleway, sans-serif;
   background: white;
   border: 0px;
   border-radius: 8px;
   pointer-events: none;
+}
+
+.infobox {
+  position: absolute;
+  width : 300;
+  height : 670;
+  text-align: left;
+  padding: 15px;
+  color: white;
+  font: 11px Raleway, sans-serif;
+  background: #2e3033;
+  opacity: 0.9;
+  border: 0px;
+  /* border-radius: 8px; */
+  /* pointer-events: none; */
+  overflow-y:auto;
 }
