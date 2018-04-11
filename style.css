@@ -62,7 +62,7 @@ div.main {
     font-family: Raleway, sans-serif;
 }
 
-.button:hover {
+.active, .button:hover {
     background-color:#59081B;
     color: white;
 }
