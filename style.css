@@ -47,6 +47,18 @@ div.main {
     margin: auto;
 }
 
+div.profile {
+    display:inline-block;
+    margin-right: 10px;
+
+}
+
+div.info {
+    display:inline-block;
+    margin-left: 10px;
+    text-align: left;
+}
+
 
 .button {
     background-color: #C12026;

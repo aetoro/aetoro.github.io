@@ -232,14 +232,16 @@
 
             for (i = 0; i < ranking; i++) {
               // var image = "<img src="https://profilepicsbucket.crossfit.com/ + regionsData[0].values[i].entrant.profilePicS3key" height="50" width="50">"
+              //var image = "<img src='https://profilepicsbucket.crossfit.com/" + regionsData[0].values[i].entrant.profilePicS3key + "' height='50px' width='50px'>";
 
-             text += "<b>" + regionsData[0].values[i].entrant.competitorName + " | Overall Rank : " + regionsData[0].values[i].overallRank + "</b></br>"
+             text += "<center><b>" + regionsData[0].values[i].entrant.competitorName + " | Overall Rank : " + regionsData[0].values[i].overallRank + "</b></br></br>"
+              + "<div class='profile'><img src='https://profilepicsbucket.crossfit.com/" + regionsData[0].values[i].entrant.profilePicS3key + "' height='75px' width='75px'></div><div class='info'>"
               + "<b> 18.1 : </b>" + regionsData[0].values[i].scores[0].scoreDisplay + "</br>"
               + "<b> 18.2 : </b>" + regionsData[0].values[i].scores[1].scoreDisplay + "</br>"
               + "<b> 18.2a : </b>" + regionsData[0].values[i].scores[2].scoreDisplay + "</br>"
               + "<b> 18.3 : </b>" + regionsData[0].values[i].scores[3].scoreDisplay + "</br>"
               + "<b> 18.4 : </b>" + regionsData[0].values[i].scores[4].scoreDisplay + "</br>"
-              + "<b> 18.5 : </b>" + regionsData[0].values[i].scores[5].scoreDisplay + "</br> </br>";
+              + "<b> 18.5 : </b>" + regionsData[0].values[i].scores[5].scoreDisplay + "</div></center></br> </br>";
 
             }
 
@@ -250,7 +252,7 @@
 
           infobox
           .style("display", "block")
-          .style("left", 810 + "px")
+          .style("left", window.innerWidth/2 + 200 + "px")
           .style("top", 417 + "px")
           .html(text)
           //.html(image)
