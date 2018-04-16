@@ -50,6 +50,19 @@
 
     <script>
 
+    function closeInfoBox(){
+      d3.select(".infobox")
+      .style("display","none");
+    }
+
+    var div = d3.select("body").append("div")
+    .attr("class", "tooltip")
+    .style("display", "none");
+
+    var infobox = d3.select("body").append("div")
+    .attr("class", "infobox")
+    .style("display", "none");
+
     var redrawMap;
 
     d3.queue()
@@ -62,7 +75,7 @@
       var womenData = dataArray[2];
       console.log(menData);
       var features = mapData.features;
-      //console.log(mapData);
+
 
       var proj = d3.geoMercator()
       .fitSize([1000, 700], mapData);
@@ -71,6 +84,7 @@
       .projection(proj);
 
       redrawMap = function(gender) {
+        closeInfoBox();
 
         if (gender == "men") {
           var data = menData;
@@ -89,7 +103,7 @@
         var dataExtent = d3.extent(regionData, function(d){
           return d.values.length;
         });
-        //console.log("dataExtent:" + dataExtent);
+
 
         var colorScale = d3.scaleLinear()
         .domain(dataExtent)
@@ -110,7 +124,7 @@
           var regionsData = regionData.filter(function(d){
             return d.key == feature.properties.region_id;
           });
-          //console.log(regionsData);
+
 
           if (regionsData.length > 0) {
             var ranking = regionsData[0].values.length;
@@ -125,18 +139,11 @@
         .on("mouseout", mouseout)
         .on("click", onClick);
 
-        var div = d3.select("body").append("div")
-        .attr("class", "tooltip")
-        .style("display", "none");
 
-        var infobox = d3.select("body").append("div")
-        .attr("class", "infobox")
-        .style("display", "none");
+
+
 
         function mouseover() {
-          //d3.select(this).attr("stroke", "#555656");
-          //d3.select(this).attr("stroke-width", 0.25);
-          //d3.select(this).attr("fill", "#C12026");
           d3.select(this).attr("fill", function(feature) {
             var regionsData = regionData.filter(function(d){
               return d.key == feature.properties.region_id;
@@ -159,27 +166,24 @@
           var regionsData = regionData.filter(function(d){
             return d.key == feature.properties.region_id;
           });
-          //console.log(regionsData);
 
           if (regionsData.length > 0) {
             var ranking = regionsData[0].values.length;
 
             if (ranking == 1) {
-              var text = "<b>" + feature.properties.region + " : " + ranking + " Athlete</b> </br>";
+              var text = "<b>" + feature.properties.region + " : " + ranking + " Athlete</b> <br />";
             }
 
             if (ranking > 1) {
-              var text = "<b>" + feature.properties.region + " : " + ranking + " Athletes</b> </br>";
+              var text = "<b>" + feature.properties.region + " : " + ranking + " Athletes</b> <br />";
             }
 
             for (i = 0; i < ranking; i++) {
-              text += regionsData[0].values[i].entrant.competitorName + "</br>";
-              // text += regionsData[0].values[i].entrant.competitorName + ",<i> " + regionsData[0].values[i].overallRank
-              // + "</i><br>";
+              text += regionsData[0].values[i].entrant.competitorName + "<br />";
             }
 
           }else {
-            var text = "<b>" + feature.properties.region + " : " + " 0 Athletes in Top 50</b> </br>"
+            var text = "<b>" + feature.properties.region + " : " + " 0 Athletes in Top 50</b> <br />"
           }
 
           div
@@ -219,45 +223,43 @@
           if (regionsData.length > 0) {
             var ranking = regionsData[0].values.length;
 
+           var text = "<img src = 'images/close.png' height='20px' width='20px' align='right' onClick='closeInfoBox()'>";
 
             if (ranking == 1) {
-              var text = "<center><b><h2>" + feature.properties.region + "</b></br><i>"
-              + ranking + " Athlete in Top 50 </i></h2></center></br>";
+               text += "<br /><center><b><h2>" + feature.properties.region + "</b><br /><i>"
+              + ranking + " Athlete in Top 50 </i></h2></center><br />";
             }
 
             if (ranking > 1) {
-              var text = "<center><b><h2>" + feature.properties.region + "</b></br><i>"
-              + ranking + " Athletes in Top 50 </i></h2></center></br>";
+               text += "<br /><center><b><h2>" + feature.properties.region + "</b><br /><i>"
+              + ranking + " Athletes in Top 50 </i></h2></center><br />";
             }
 
             for (i = 0; i < ranking; i++) {
-              // var image = "<img src="https://profilepicsbucket.crossfit.com/ + regionsData[0].values[i].entrant.profilePicS3key" height="50" width="50">"
-              //var image = "<img src='https://profilepicsbucket.crossfit.com/" + regionsData[0].values[i].entrant.profilePicS3key + "' height='50px' width='50px'>";
 
-             text += "<center><b>" + regionsData[0].values[i].entrant.competitorName + " | Overall Rank : " + regionsData[0].values[i].overallRank + "</b></br></br>"
+
+             text += "<center><b>" + regionsData[0].values[i].entrant.competitorName + " | Overall Rank : " + regionsData[0].values[i].overallRank + "</b><br /><br />"
               + "<div class='profile'><img src='https://profilepicsbucket.crossfit.com/" + regionsData[0].values[i].entrant.profilePicS3key + "' height='75px' width='75px'></div><div class='info'>"
-              + "<b> 18.1 : </b>" + regionsData[0].values[i].scores[0].scoreDisplay + "</br>"
-              + "<b> 18.2 : </b>" + regionsData[0].values[i].scores[1].scoreDisplay + "</br>"
-              + "<b> 18.2a : </b>" + regionsData[0].values[i].scores[2].scoreDisplay + "</br>"
-              + "<b> 18.3 : </b>" + regionsData[0].values[i].scores[3].scoreDisplay + "</br>"
-              + "<b> 18.4 : </b>" + regionsData[0].values[i].scores[4].scoreDisplay + "</br>"
-              + "<b> 18.5 : </b>" + regionsData[0].values[i].scores[5].scoreDisplay + "</div></center></br> </br>";
+              + "<b> 18.1 : </b>" + regionsData[0].values[i].scores[0].scoreDisplay + "<br />"
+              + "<b> 18.2 : </b>" + regionsData[0].values[i].scores[1].scoreDisplay + "<br />"
+              + "<b> 18.2a : </b>" + regionsData[0].values[i].scores[2].scoreDisplay + "<br />"
+              + "<b> 18.3 : </b>" + regionsData[0].values[i].scores[3].scoreDisplay + "<br />"
+              + "<b> 18.4 : </b>" + regionsData[0].values[i].scores[4].scoreDisplay + "<br />"
+              + "<b> 18.5 : </b>" + regionsData[0].values[i].scores[5].scoreDisplay + "</div></center><br /> <br />";
 
             }
 
           }else {
-            var text = "<center><b><h2>" + feature.properties.region + "</b></br><i>" +
-            "No Athletes in Top 50 </i></h2></center></br>";
+             text += "<br /><center><b><h2>" + feature.properties.region + "</b><br /><i>" +
+            "No Athletes in Top 50 </i></h2></center><br />";
           }
+
 
           infobox
           .style("display", "block")
-          .style("left", window.innerWidth/2 + 200 + "px")
+          .style("right", window.innerWidth/2 - 500 + "px")
           .style("top", 417 + "px")
           .html(text)
-          //.html(image)
-
-
 
         }
       }
@@ -266,7 +268,7 @@
 
     });
 
-//this for men / women buttons
+//this is for men / women buttons
     var header = document.getElementById("buttonDiv");
     var btns = header.getElementsByClassName("button");
     for (var i = 0; i < btns.length; i++) {
@@ -278,9 +280,9 @@
     }
 
     </script>
-  </br>
-</br>
-</br>
-</br>
+  <br />
+<br />
+<br />
+<br />
 </body>
 </html>
