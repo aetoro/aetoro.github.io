@@ -86,7 +86,6 @@
       var mapData = dataArray[0];
       var menData = dataArray[1];
       var womenData = dataArray[2];
-      console.log(menData);
       var features = mapData.features;
 
 
@@ -161,7 +160,7 @@
             var regionsData = regionData.filter(function(d){
               return d.key == feature.properties.region_id;
             });
-            //console.log(regionsData);
+
 
             if (regionsData.length > 0) {
               var ranking = regionsData[0].values.length;
@@ -213,7 +212,7 @@
             var regionsData = regionData.filter(function(d){
               return d.key == feature.properties.region_id;
             });
-            //console.log(regionsData);
+
 
             if (regionsData.length > 0) {
               var ranking = regionsData[0].values.length;
@@ -273,7 +272,7 @@
           .style("display", "block")
           .style("right", window.outerWidth/2 - 500 + "px")
           // .style("top", screen.height - 355 + "px")
-          .style("top", screen.height - (screen.height * .44375) + "px")
+          .style("top", screen.height - (screen.height * .44375) + "px") // trying to make this work with differnt screen sizes
 
           .html(text)
 
@@ -296,7 +295,7 @@
       });
     }
 
-    console.log(screen.height);
+
     </script>
 
       <div class"bottom" >
