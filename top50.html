@@ -272,7 +272,9 @@
           infobox
           .style("display", "block")
           .style("right", window.outerWidth/2 - 500 + "px")
-          .style("top", screen.height - 355 + "px")
+          // .style("top", screen.height - 355 + "px")
+          .style("top", screen.height - (screen.height * .44375) + "px")
+
           .html(text)
 
 
@@ -294,6 +296,7 @@
       });
     }
 
+
     </script>
 
       <div class"bottom" >
@@ -301,6 +304,7 @@
       <p class="bottom" align=center> Map created by <a href="https://aetoro.github.io" target="_blank">Andrea Toro </a> | Data from <a href="https://games.crossfit.com/" target="_blank"> CrossFit Games </a> Open Leaderboard 2018 </p>
         <br />
     </div>
+
 
   </body>
   </html>
