@@ -15,23 +15,18 @@
   <center>
     <div class="image" align=left>
       <a href="https://games.crossfit.com/" target="_blank">
-      <!-- <img src="images/gamesLogo.png" alt="CrossFit" style="width:210px;height:155px"> -->
         <img src="images/gamesLogo.png" alt="CrossFit" style="width:170px;height:125px">
-    </a>
+      </a>
     </div>
     <h1 align=left>
 
       the open <br />
 
-       <center>top 50</center>
+      <center>top 50</center>
 
     </h1>
 
-
-
   </center>
-
-
   <div class="main" aligh=left>
     <p>On February 22, 2018, in an event known simply as "the Open," an estimated 500,000 CrossFit athletes from all over the world began a five-week fitness competition, which tested strength, endurance, and aspects of gymnastics.</p>
 
@@ -78,7 +73,7 @@
     var redrawMap;
 
     d3.queue()
-    .defer(d3.json, "crossfitdata/crossfitMap.geojson")
+    .defer(d3.json, "crossfitdata/cf.geojson")
     .defer(d3.json, "crossfitdata/menoverall.json")
     .defer(d3.json, "crossfitdata/womenoverall.json")
     .awaitAll(function(error, dataArray) {
@@ -270,8 +265,6 @@
           infobox
           .style("display", "block")
           .style("right", window.outerWidth/2 - 500 + "px")
-          // .style("top", screen.height - 355 + "px")
-          //.style("top", screen.height - (screen.height * .44375) + "px") // trying to make this work with differnt screen sizes
           .style("top", 445 + "px")
           .html(text)
 
@@ -297,10 +290,10 @@
 
     </script>
 
-      <div class"bottom" >
-        <br />
+    <div class"bottom" >
+      <br />
       <p class="bottom" align=center> Map created by <a href="https://aetoro.github.io" target="_blank">Andrea Toro </a> | Data from <a href="https://games.crossfit.com/" target="_blank"> CrossFit Games </a> Open Leaderboard 2018 </p>
-        <br />
+      <br />
     </div>
 
 
